@@ -1,6 +1,7 @@
 'use client'
 
 import { useEffect, useState } from 'react'
+import portfolioData from '../data.json'
 
 export interface PortfolioData {
   personal: {
@@ -61,22 +62,14 @@ export function usePortfolioData() {
   const [error, setError] = useState<string | null>(null)
 
   useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await fetch('/api/portfolio')
-        if (!response.ok) {
-          throw new Error('Failed to fetch portfolio data')
-        }
-        const portfolioData = await response.json()
-        setData(portfolioData)
-      } catch (err) {
-        setError(err instanceof Error ? err.message : 'An error occurred')
-      } finally {
-        setLoading(false)
-      }
+    // Use imported data directly for static export compatibility
+    try {
+      setData(portfolioData)
+    } catch (err) {
+      setError(err instanceof Error ? err.message : 'An error occurred')
+    } finally {
+      setLoading(false)
     }
-
-    fetchData()
   }, [])
 
   return { data, loading, error }
