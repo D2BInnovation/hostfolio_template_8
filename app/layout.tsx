@@ -8,9 +8,8 @@ const _geist = Geist({ subsets: ["latin"] });
 const _geistMono = Geist_Mono({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: 'John Doe - Full Stack Developer',
-  description: 'Premium portfolio of John Doe, a full-stack developer with 5+ years of experience building scalable web applications. View projects, skills, and experience.',
-  keywords: ['Full Stack Developer', 'React', 'Node.js', 'Web Development', 'Portfolio'],
+  title: 'My Portfolio',
+  description: 'My Portfolio',
   generator: 'HostFolio',
   icons: {
     icon: [
