@@ -48,11 +48,10 @@ export function Header({ data }: HeaderProps) {
       initial={{ y: -100 }}
       animate={{ y: 0 }}
       transition={{ duration: 0.5 }}
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        scrolled
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled
           ? 'bg-background/80 backdrop-blur-md border-b border-border'
           : 'bg-transparent'
-      }`}
+        }`}
     >
       <nav className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center'>
         {/* Logo */}
@@ -74,11 +73,10 @@ export function Header({ data }: HeaderProps) {
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.1 + index * 0.05 }}
               onClick={() => handleNavClick(section.id)}
-              className={`text-sm font-medium transition-colors relative group ${
-                activeSection === section.id
+              className={`text-sm font-medium transition-colors relative group ${activeSection === section.id
                   ? 'text-primary'
                   : 'text-foreground/70 hover:text-foreground'
-              }`}
+                }`}
             >
               {section.name}
               <motion.div
@@ -91,16 +89,31 @@ export function Header({ data }: HeaderProps) {
           ))}
         </div>
 
-        {/* CTA Button */}
-        <motion.a
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 0.3 }}
-          href={`mailto:${data.personal.email}`}
-          className='hidden sm:block px-6 py-2 bg-primary text-primary-foreground rounded-full font-medium hover:shadow-lg hover:shadow-primary/50 transition-shadow'
-        >
-          Contact
-        </motion.a>
+        {/* CTA Buttons */}
+        <div className='hidden sm:flex items-center gap-4'>
+          {((data as any).resume || data.personal.resume) && (
+            <motion.a
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 0.25 }}
+              href={(data as any).resume || data.personal.resume}
+              target="_blank"
+              rel="noopener noreferrer"
+              className='px-6 py-2 border border-primary text-primary rounded-full font-medium hover:bg-primary/5 transition-colors'
+            >
+              Resume
+            </motion.a>
+          )}
+          <motion.a
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.3 }}
+            href={`mailto:${data.personal.email}`}
+            className='px-6 py-2 bg-primary text-primary-foreground rounded-full font-medium hover:shadow-lg hover:shadow-primary/50 transition-shadow'
+          >
+            Contact
+          </motion.a>
+        </div>
       </nav>
     </motion.header>
   )

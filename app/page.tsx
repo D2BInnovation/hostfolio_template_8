@@ -49,11 +49,11 @@ export default function Home() {
       <Header data={data} />
 
       <main className='overflow-hidden'>
-        <HeroSection data={data} />
-        <AboutSection data={data} />
-        <ExperienceSection data={data} />
-        <ProjectsSection data={data} />
-        <ContactSection data={data} />
+        {data.hero && <HeroSection data={data} />}
+        {data.about && <AboutSection data={data} />}
+        {data.experience && data.experience.length > 0 && <ExperienceSection data={data} />}
+        {data.projects && data.projects.length > 0 && <ProjectsSection data={data} />}
+        {data.contact && <ContactSection data={data} />}
       </main>
 
       <Footer data={data} />
