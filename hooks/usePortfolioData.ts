@@ -14,6 +14,7 @@ export interface PortfolioData {
     linkedin: string
     github: string
     bio: string
+    resume?: string
   }
   hero?: {
     greeting: string
@@ -54,6 +55,7 @@ export interface PortfolioData {
       icon: string
     }>
   }
+  resume?: string
 }
 
 export function usePortfolioData() {
