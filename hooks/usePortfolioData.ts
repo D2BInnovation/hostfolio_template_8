@@ -66,7 +66,7 @@ export function usePortfolioData() {
   useEffect(() => {
     // Use imported data directly for static export compatibility
     try {
-      setData(portfolioData)
+      setData(portfolioData as unknown as PortfolioData)
     } catch (err) {
       setError(err instanceof Error ? err.message : 'An error occurred')
     } finally {

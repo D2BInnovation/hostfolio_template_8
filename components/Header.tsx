@@ -31,8 +31,8 @@ export function Header({ data }: HeaderProps) {
   ].filter(section => {
     if (section.id === 'hero') return !!data.hero
     if (section.id === 'about') return !!data.about
-    if (section.id === 'experience') return !!data.experience
-    if (section.id === 'projects') return !!data.projects
+    if (section.id === 'experience') return !!data.experience && data.experience.length > 0
+    if (section.id === 'projects') return !!data.projects && data.projects.length > 0
     if (section.id === 'contact') return !!data.contact
     return false
   })
@@ -49,8 +49,8 @@ export function Header({ data }: HeaderProps) {
       animate={{ y: 0 }}
       transition={{ duration: 0.5 }}
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled
-          ? 'bg-background/80 backdrop-blur-md border-b border-border'
-          : 'bg-transparent'
+        ? 'bg-background/80 backdrop-blur-md border-b border-border'
+        : 'bg-transparent'
         }`}
     >
       <nav className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center'>
@@ -74,8 +74,8 @@ export function Header({ data }: HeaderProps) {
               transition={{ delay: 0.1 + index * 0.05 }}
               onClick={() => handleNavClick(section.id)}
               className={`text-sm font-medium transition-colors relative group ${activeSection === section.id
-                  ? 'text-primary'
-                  : 'text-foreground/70 hover:text-foreground'
+                ? 'text-primary'
+                : 'text-foreground/70 hover:text-foreground'
                 }`}
             >
               {section.name}
